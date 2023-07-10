@@ -47,7 +47,7 @@ use({
           bg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
       })
 
-      vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = '#30323E' })
+      vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = '#4B5263' })
       vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { fg = '#2F313C' })
 
       -- Change numbers colors below the current

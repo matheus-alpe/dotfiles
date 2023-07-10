@@ -1,6 +1,3 @@
--- vim.g.nvim_tree_indent_markers = 1
--- vim.g.nvim_tree_git_hl = 1
--- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
@@ -22,7 +19,7 @@ require('nvim-tree').setup({
         enable = true,
       },
       icons = {
-        git_placement = "signcolumn",
+        git_placement = 'signcolumn',
         show = {
           file = true,
           folder = false,
@@ -34,7 +31,7 @@ require('nvim-tree').setup({
     update_focused_file = {
       enable = true,
       update_root = true,
-      ignore_list = { "help" },
+      ignore_list = { 'help' },
     },
     diagnostics = {
       enable = true,
@@ -42,7 +39,7 @@ require('nvim-tree').setup({
     },
     filters = {
       custom = {
-        "^.git$",
+        '^.git$',
       },
     },
     actions = {
@@ -53,7 +50,7 @@ require('nvim-tree').setup({
       open_file = {
         resize_window = true,
         window_picker = {
-          chars = "aoeui",
+          chars = 'aoeui',
         },
       },
       remove_file = {
