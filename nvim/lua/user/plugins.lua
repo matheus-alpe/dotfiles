@@ -207,6 +207,27 @@ use({
   end,
 })
 
+use({
+  'lewis6991/gitsigns.nvim',
+  requires = 'nvim-lua/plenary.nvim',
+  config = function()
+    require('gitsigns').setup({
+        current_line_blame = true,
+        current_line_blame_opts = {
+          delay = 500,
+        },
+    })
+    vim.keymap.set('n', ']h', ':Gitsigns next_hunk<CR>')
+    vim.keymap.set('n', '[h', ':Gitsigns prev_hunk<CR>')
+  end,
+})
+
+use({
+  'tpope/vim-fugitive',
+  requires = 'tpope/vim-rhubarb',
+  cmd = 'G',
+})
+
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 if packer_bootstrap then
