@@ -50,6 +50,13 @@ use({
       vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = '#4B5263' })
       vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { fg = '#2F313C' })
 
+
+      -- Make the StatusLineNonText background the same as StatusLine
+      vim.api.nvim_set_hl(0, 'StatusLineNonText', {
+          fg = vim.api.nvim_get_hl_by_name('NonText', true).foreground,
+          bg = vim.api.nvim_get_hl_by_name('StatusLine', true).background,
+      })
+
       -- Change numbers colors below the current
       vim.api.nvim_set_hl(0, 'LineNrBelow', {
           fg = "#4B5263",
@@ -112,7 +119,7 @@ use({
     requires = 'kana/vim-textobj-user',
 })
 
--- Automaticallly set the working directory to the project root.
+-- Automatically set the working directory to the project root.
 use({
     'airblade/vim-rooter',
     setup = function()
@@ -180,6 +187,23 @@ use({
   requires = 'kyazdani42/nvim-web-devicons',
   config = function()
     require('user.plugins.nvim-tree')
+  end,
+})
+
+-- Status line
+use({
+  'nvim-lualine/lualine.nvim',
+  requires = 'kyazdani42/nvim-web-devicons',
+  config = function()
+    require('user.plugins.lualine')
+  end,
+})
+
+-- Display indentation lines.
+use({
+  'lukas-reineke/indent-blankline.nvim',
+  config = function()
+    require('user.plugins.indent-blankline')
   end,
 })
 
