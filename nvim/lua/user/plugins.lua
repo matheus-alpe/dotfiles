@@ -214,7 +214,7 @@ use({
     require('gitsigns').setup({
         current_line_blame = true,
         current_line_blame_opts = {
-          delay = 500,
+          delay = 3000,
         },
     })
     vim.keymap.set('n', ']h', ':Gitsigns next_hunk<CR>')
@@ -245,6 +245,19 @@ use({
   },
   config = function()
     require('user.plugins.treesitter')
+  end,
+})
+
+use({
+  'neovim/nvim-lspconfig',
+  requires = {
+    'b0o/schemastore.nvim',
+    'folke/lsp-colors.nvim',
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+  },
+  config = function()
+    require('user.plugins.lspconfig')
   end,
 })
 
