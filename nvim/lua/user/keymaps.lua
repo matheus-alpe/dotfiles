@@ -1,6 +1,6 @@
 -- Space is the leader key
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+-- vim.g.mapleader = ' '
+-- vim.g.maplocalleader = ' '
 
 -- Quick clear search highlight with space + k
 vim.keymap.set('n', '<leader>k', ':nohlsearch<CR>')
