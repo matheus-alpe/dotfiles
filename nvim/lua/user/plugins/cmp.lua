@@ -36,18 +36,18 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
-    -- ['<CR>'] = cmp.mapping.confirm {
-    --   behavior = cmp.ConfirmBehavior.Replace,
-    --   select = false,
-    -- },
-    ['<CR>'] = cmp.mapping(function(fallback)
-      if not cmp.confirm(option) then
-        fallback()
-      end
-      -- .confirm {
-      -- behavior = cmp.ConfirmBehavior.Replace,
-      -- select = false,
-    end, { 'i', 's' }),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = false,
+    },
+    -- ['<CR>'] = cmp.mapping(function(fallback)
+    --   if not cmp.confirm(option) then
+    --     fallback()
+    --   end
+    --   -- .confirm {
+    --   -- behavior = cmp.ConfirmBehavior.Replace,
+    --   -- select = false,
+    -- end, { 'i', 's' }),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if luasnip.jumpable(1) then
         luasnip.jump(1)
