@@ -14,9 +14,9 @@ require('null-ls').setup({
     }),
     require('null-ls').builtins.diagnostics.proselint,
     require('null-ls').builtins.diagnostics.gitlint,
-    require('null-ls').builtins.diagnostics.luacheck.with({
-      extra_args = { '--config', vim.fn.stdpath('config') .. '/.luacheckrc' },
-    }),
+    -- require('null-ls').builtins.diagnostics.luacheck.with({
+    --   extra_args = { '--config', vim.fn.stdpath('config') .. '/.luacheckrc' },
+    -- }),
     -- require("null-ls").builtins.diagnostics.phpstan,
     require('null-ls').builtins.diagnostics.solhint,
     require('null-ls').builtins.diagnostics.trail_space.with({ disabled_filetypes = { 'NvimTree' } }),
