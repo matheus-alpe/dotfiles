@@ -22,7 +22,12 @@ return require('packer').startup(function(use)
     use({
         'nvim-telescope/telescope.nvim',
         tag = '0.1.2',
-        requires = { { 'nvim-lua/plenary.nvim' } }
+        requires = { 'nvim-lua/plenary.nvim' }
+    })
+
+    use({
+        'folke/trouble.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons' }
     })
 
     use({
@@ -33,7 +38,7 @@ return require('packer').startup(function(use)
 
     use({
         'ThePrimeagen/harpoon',
-        requires = { { 'nvim-lua/plenary.nvim' } }
+        requires = { 'nvim-lua/plenary.nvim' }
     })
 
     use({
