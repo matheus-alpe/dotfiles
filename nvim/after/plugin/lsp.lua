@@ -3,7 +3,7 @@ local lsp = require('lsp-zero').preset({})
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
     local opts = {buffer = bufnr, remap = false}
 
     vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
@@ -27,9 +27,6 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm({select = false}),
 })
-
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
   mapping = cmp_mappings

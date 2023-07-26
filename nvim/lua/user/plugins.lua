@@ -18,7 +18,6 @@ return require('packer').startup(function(use)
     use('ThePrimeagen/vim-be-good')
     use('nvim-treesitter/nvim-treesitter-context')
 
-    -- My plugins here
     use({
         'nvim-telescope/telescope.nvim',
         tag = '0.1.2',
@@ -58,10 +57,23 @@ return require('packer').startup(function(use)
             -- Autocompletion
             { 'hrsh7th/nvim-cmp' },     -- Required
             { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' },     -- Required
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-path' },
+            { 'hrsh7th/cmp-cmdline' },
+            { 'L3MON4D3/LuaSnip' }, -- Required
         }
     })
 
+    use({
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 500
+            require('which-key').setup({})
+        end
+    })
+
+    -- Theme
     use({
         'catppuccin/nvim',
         as = 'catppuccin',
