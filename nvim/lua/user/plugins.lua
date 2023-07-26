@@ -17,6 +17,63 @@ return require('packer').startup(function(use)
     use('tpope/vim-fugitive')
     use('ThePrimeagen/vim-be-good')
     use('nvim-treesitter/nvim-treesitter-context')
+    -- Commenting support. (gcc, visualmode + gc or 5gcc)
+    use('tpope/vim-commentary')
+
+    -- Add, change and delete surrounding text.
+    --  (cs<char><char-to-replace>, cs'")
+    --  (cs<char><html-tag>, cs'<a>)
+    --  (ds<char>, dst to delete tag)
+    --  (ds<char>, ds( to delete parenthesis)
+    use('tpope/vim-surround')
+
+    -- Useful commands like :Rename and :SudoWrite
+    use('tpope/vim-eunuch')
+
+    -- Pairs of handy bracket mappings, like [b and ]b
+    use('tpope/vim-unimpaired')
+
+    -- Indent autodetection with editorconfig support
+    use('tpope/vim-sleuth')
+
+    -- Allow plugins to enable repeating of commands
+    use('tpope/vim-repeat')
+
+    -- Add more languages
+    use('sheerun/vim-polyglot')
+
+    -- Jump to the last location when opening a file.
+    use('farmergreg/vim-lastplace')
+
+    use({
+        'nvim-lualine/lualine.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+    })
+
+    -- Automatically set the working directory to the project root.
+    use({
+        'airblade/vim-rooter',
+        setup = function()
+            -- Instead of this running every time we open a file, we'll just run it once when Vim starts.
+            vim.g.rooter_manual_only = 1
+        end,
+        config = function()
+            vim.cmd('Rooter')
+        end,
+    })
+
+    -- Automatically dd closing brackets, quotes, etc.
+    use({
+        'windwp/nvim-autopairs',
+        config = function()
+            require('nvim-autopairs').setup()
+        end,
+    })
+
+    use({
+        'lewis6991/gitsigns.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+    })
 
     use({
         'nvim-telescope/telescope.nvim',
