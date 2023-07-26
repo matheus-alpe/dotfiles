@@ -20,20 +20,15 @@ telescope.setup({
             i = {
                 ['<esc>'] = actions.close,
             }
-        }
-    },
-    file_ignore_patterns = {
-        '.git/',
-        'node_modules'
+        },
+        file_ignore_patterns = {
+            '.git',
+            'node_modules'
+        },
     },
     pickers = {
         find_files = {
             hidden = true,
-        },
-        buffers = {
-            layout_config = {
-                width = 80,
-            },
         },
         oldfiles = {
             prompt_title = 'History',

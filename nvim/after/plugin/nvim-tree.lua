@@ -10,33 +10,38 @@ require('nvim-tree').setup({
   view = {
     adaptive_size = true,
     centralize_selection = true
-    -- float = {
-    --   enable = true,
-    --   open_win_config = {
-    --     border = 'none',
-    --     col = 0,
-    --     row = 0,
-    --   }
-    -- }
   },
   renderer = {
-    root_folder_label = false,
-    full_name = true,
     group_empty = true,
-    special_files = {},
-    symlink_destination = false,
+    full_name = true,
+    highlight_git = true,
+    root_folder_label = function(path)
+      return "/" .. vim.fn.fnamemodify(path, ":t")
+    end,
     indent_markers = {
       enable = true,
     },
     icons = {
       git_placement = 'signcolumn',
       show = {
-        file = true,
-        folder = true,
         folder_arrow = false,
-        git = true,
       },
     },
+  },
+  filters = {
+    custom = {
+      '^.git$',
+      'node_modules'
+    },
+    git_ignored = false
+  },
+  actions = {
+    expand_all = {
+      exclude = { ".git", "node_module", "build", "dist" }
+    },
+    open_file = {
+      quit_on_open = true
+    }
   },
   update_focused_file = {
     enable = true,
@@ -47,20 +52,6 @@ require('nvim-tree').setup({
     enable = true,
     show_on_dirs = true,
   },
-  filters = {
-    custom = {
-      '^.git$',
-      'node_modules'
-    },
-    git_ignored = false
-  },
 })
-
--- vim.cmd([[
---   highlight NvimTreeIndentMarker guifg=#30323E
---   augroup NvimTreeHighlights
---     autocmd ColorScheme * highlight NvimTreeIndentMarker guifg=#30323E
---   augroup end
--- ]])
 
 vim.keymap.set('n', '<leader>n', ':NvimTreeFindFileToggle<CR>')
