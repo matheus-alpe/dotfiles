@@ -18,6 +18,7 @@ return require('packer').startup(function(use)
     use('ThePrimeagen/vim-be-good')
     use('nvim-treesitter/nvim-treesitter-context')
     -- Commenting support. (gcc, visualmode + gc or 5gcc)
+
     use('tpope/vim-commentary')
 
     -- Add, change and delete surrounding text.
@@ -70,10 +71,28 @@ return require('packer').startup(function(use)
         end,
     })
 
+    -- Split arrays and methods onto multiple lines, or join them back up.
+    -- gS - split into lines
+    -- gJ - join together in one line
+    use({
+        'AndrewRadev/splitjoin.vim',
+        config = function()
+            vim.g.splitjoin_html_attributes_bracket_on_new_line = 1
+            vim.g.splitjoin_trailing_comma = 1
+        end,
+    })
+
     use({
         'lewis6991/gitsigns.nvim',
         requires = 'nvim-lua/plenary.nvim',
     })
+
+    use({
+        'nvim-tree/nvim-tree.lua',
+        requires = 'kyazdani42/nvim-web-devicons',
+    })
+
+    --here
 
     use({
         'nvim-telescope/telescope.nvim',
