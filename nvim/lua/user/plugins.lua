@@ -149,7 +149,7 @@ return require('packer').startup(function(use)
 
     use({
         "folke/which-key.nvim",
-        config = function(base, param)
+        config = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 500
             require('which-key').setup({})
