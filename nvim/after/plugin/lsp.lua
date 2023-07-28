@@ -60,8 +60,31 @@ lsp.set_preferences({
     }
 })
 
+
+local lspconfig = require('lspconfig')
+local util = require("lspconfig/util")
+
+lspconfig.gopls.setup({
+    cmd = { "gopls", "serve" },
+    filetypes = { "go", "gomod" },
+    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+    settings = {
+        gopls = {
+            staticcheck = true,
+            usePlaceholders = true,
+            analyses = {
+                unusedparams = true,
+                useany = true,
+                unusedwrite = true,
+                unusedvariable = true
+            },
+        },
+    },
+
+})
+
 lsp.setup()
 
 vim.diagnostic.config({
-    virtual_text = true
+    virtual_text = true,
 })
