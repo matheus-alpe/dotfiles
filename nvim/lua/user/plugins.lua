@@ -110,7 +110,11 @@ return require('packer').startup(function(use)
 
     use({
         'nvim-treesitter/nvim-treesitter',
-        requires = { 'nvim-treesitter/playground' },
+        requires = {
+            'nvim-treesitter/playground',
+            'nvim-treesitter/nvim-treesitter-textobjects',
+            'JoosepAlviste/nvim-ts-context-commentstring',
+        },
         run = ':TSUpdate'
     })
 
@@ -145,7 +149,7 @@ return require('packer').startup(function(use)
 
     use({
         "folke/which-key.nvim",
-        config = function()
+        config = function(base, param)
             vim.o.timeout = true
             vim.o.timeoutlen = 500
             require('which-key').setup({})
