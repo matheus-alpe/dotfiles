@@ -17,8 +17,8 @@ return require('packer').startup(function(use)
     use('tpope/vim-fugitive')
     use('ThePrimeagen/vim-be-good')
     use('nvim-treesitter/nvim-treesitter-context')
-    -- Commenting support. (gcc, visualmode + gc or 5gcc)
 
+    -- Commenting support. (gcc, visualmode + gc or 5gcc)
     use('tpope/vim-commentary')
 
     -- Add, change and delete surrounding text.
@@ -114,6 +114,7 @@ return require('packer').startup(function(use)
             'nvim-treesitter/playground',
             'nvim-treesitter/nvim-treesitter-textobjects',
             'JoosepAlviste/nvim-ts-context-commentstring',
+            'windwp/nvim-ts-autotag',
         },
         run = ':TSUpdate'
     })
