@@ -42,6 +42,9 @@ end)
 -- Quick clear search highlight with Esc
 vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>')
 
+-- Select all
+vim.keymap.set('n', '<c-a>', 'ggVG')
+
 -- Close all buffers windows.
 vim.keymap.set('n', '<leader>Q', ':bufdo bdelete<CR>')
 
