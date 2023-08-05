@@ -2,13 +2,13 @@ local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 local actions = require('telescope.actions')
 
+vim.keymap.set('n', '<s-tab>', builtin.buffers, { desc = "Telescope opened buffers" })
 vim.keymap.set('n', '<c-p>', builtin.find_files, { desc = "Telescope find_files" })
 vim.keymap.set('n', '<c-f>', function()
     builtin.grep_string({ search = vim.fn.input("   > ") });
 end, { desc = "Telescope search + grep" })
 
 vim.keymap.set('n', '<leader>pg', builtin.live_grep, { desc = "Telescope live_grep" })
-vim.keymap.set('n', '<leader>pb', builtin.buffers, { desc = "Telescope git_status" })
 vim.keymap.set('n', '<leader>ph', builtin.help_tags, { desc = "Telescope help_tags" })
 vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = "Telescope git_files" })
 -- <leader>gs is used by fugitive

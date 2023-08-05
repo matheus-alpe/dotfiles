@@ -144,7 +144,18 @@ return require('packer').startup(function(use)
             { 'hrsh7th/cmp-buffer' },
             { 'hrsh7th/cmp-path' },
             { 'hrsh7th/cmp-cmdline' },
-            { 'L3MON4D3/LuaSnip' }, -- Required
+            { 'hrsh7th/cmp-nvim-lua' },
+
+            -- Snippets
+            {
+                "L3MON4D3/LuaSnip",
+                -- follow latest release.
+                tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+                -- install jsregexp (optional!:).
+                run = "make install_jsregexp",
+            },
+            { 'rafamadriz/friendly-snippets' },
+            { 'saadparwaiz1/cmp_luasnip' },
         }
     })
 
