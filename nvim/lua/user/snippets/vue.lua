@@ -1,17 +1,5 @@
 local utils = require('user.snippets.utils')
 
--- <script setup>
-
--- </script>
-
--- <template>
-
--- </template>
-
--- <style >
-
--- </style>
-
 return {
     utils.snip("tssfc", {
         utils.text({ "<script lang=\"ts\" setup>", ""}),
@@ -26,7 +14,6 @@ return {
         utils.insert(4),
         utils.text({ "", "</style>" }),
     }),
-
 
     utils.snip("ssfc", {
         utils.text({ "<script setup>", ""}),
