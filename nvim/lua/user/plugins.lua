@@ -95,8 +95,6 @@ return require('packer').startup(function(use)
         requires = 'kyazdani42/nvim-web-devicons',
     })
 
-    --here
-
     use({
         'nvim-telescope/telescope.nvim',
         tag = '0.1.2',
@@ -129,18 +127,18 @@ return require('packer').startup(function(use)
         branch = 'v2.x',
         requires = {
             -- LSP Support
-            { 'neovim/nvim-lspconfig' }, -- Required
-            {                            -- Optional
+            { 'neovim/nvim-lspconfig' },
+            {
                 'williamboman/mason.nvim',
                 run = function()
                     pcall(vim.api.nvim_command, 'MasonUpdate')
                 end,
             },
-            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+            { 'williamboman/mason-lspconfig.nvim' },
 
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },     -- Required
-            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-nvim-lsp' },
             { 'hrsh7th/cmp-buffer' },
             { 'hrsh7th/cmp-path' },
             { 'hrsh7th/cmp-cmdline' },
@@ -149,9 +147,7 @@ return require('packer').startup(function(use)
             -- Snippets
             {
                 "L3MON4D3/LuaSnip",
-                -- follow latest release.
-                tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-                -- install jsregexp (optional!:).
+                tag = "v2.*",
                 run = "make install_jsregexp",
             },
             { 'rafamadriz/friendly-snippets' },
