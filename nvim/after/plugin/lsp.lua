@@ -1,18 +1,3 @@
-local ls = require "luasnip"
-local snippets = require('user.snippets')
-
-ls.config.set_config {
-    history = true,
-    -- treesitter-hl has 100, use something higher (default is 200).
-    ext_base_prio = 200,
-    -- minimal increase in priority.
-    ext_prio_increase = 1,
-    enable_autosnippets = false,
-    store_selection_keys = "<c-s>",
-}
-
-ls.add_snippets(nil, snippets)
-
 local lsp = require('lsp-zero')
 
 lsp.preset('recommended')
@@ -35,15 +20,23 @@ lsp.on_attach(function(_, bufnr)
     vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
 end)
 
+-- CMP config
 
-local has_words_before = function()
-  unpack = unpack or table.unpack
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp')
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local cmp_action = require('lsp-zero').cmp_action()
+local ls = require("luasnip")
+local snippets = require('user.snippets')
+
+ls.config.set_config {
+    history = true,
+    ext_base_prio = 200,
+    ext_prio_increase = 1,
+    enable_autosnippets = false,
+    store_selection_keys = "<c-s>",
+}
+
+ls.add_snippets(nil, snippets)
 
 cmp.event:on(
     'confirm_done',
@@ -51,6 +44,18 @@ cmp.event:on(
 )
 
 cmp.setup({
+    preselect = 'item',
+    completion = {
+        completeopt = 'menu,menuone,noinsert'
+    },
+    formatting = {
+        fields = { 'abbr', 'kind', 'menu' },
+        format = require('lspkind').cmp_format({
+            mode = 'symbol_text',
+            maxwidth = 50,
+            ellipsis_char = '...',
+        })
+    },
     sources = {
         { name = 'nvim_lsp' },
         { name = 'nvim_lsp_signature_help' },
@@ -68,29 +73,8 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm({ select = false }),
-    ["<Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-            cmp.select_next_item()
-            -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-            -- they way you will only jump inside the snippet region
-        elseif ls.expand_or_jumpable() then
-            ls.expand_or_jump()
-        elseif has_words_before() then
-            cmp.complete()
-        else
-            fallback()
-        end
-    end, { "i", "s" }),
-
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-            cmp.select_prev_item()
-        elseif ls.jumpable(-1) then
-            ls.jump(-1)
-        else
-            fallback()
-        end
-    end, { "i", "s" }),
+    ['<Tab>'] = cmp_action.luasnip_supertab(),
+    ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
 })
 
 lsp.setup_nvim_cmp({

@@ -128,6 +128,7 @@ return require('packer').startup(function(use)
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
+            { 'onsails/lspkind.nvim' },
             {
                 'williamboman/mason.nvim',
                 run = function()
