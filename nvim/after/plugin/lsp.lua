@@ -48,14 +48,6 @@ cmp.setup({
     completion = {
         completeopt = 'menu,menuone,noinsert'
     },
-    formatting = {
-        fields = { 'abbr', 'kind', 'menu' },
-        format = require('lspkind').cmp_format({
-            mode = 'symbol_text',
-            maxwidth = 50,
-            ellipsis_char = '...',
-        })
-    },
     sources = {
         { name = 'nvim_lsp' },
         { name = 'nvim_lsp_signature_help' },
