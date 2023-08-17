@@ -105,6 +105,10 @@ lspconfig.gopls.setup({
 
 })
 
+lspconfig.emmet_language_server.setup({
+    filetypes = { 'html' }
+})
+
 lspconfig.volar.setup({
     filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
 })
