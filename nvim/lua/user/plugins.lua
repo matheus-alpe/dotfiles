@@ -17,6 +17,7 @@ return require('packer').startup(function(use)
     use('tpope/vim-fugitive')
     use('ThePrimeagen/vim-be-good')
     use('nvim-treesitter/nvim-treesitter-context')
+    use('rhysd/git-messenger.vim')
 
     -- Commenting support. (gcc, visualmode + gc or 5gcc)
     use('tpope/vim-commentary')
@@ -42,9 +43,6 @@ return require('packer').startup(function(use)
 
     -- Add more languages
     use('sheerun/vim-polyglot')
-
-    -- Jump to the last location when opening a file.
-    use('farmergreg/vim-lastplace')
 
     use({
         'nvim-lualine/lualine.nvim',

@@ -8,16 +8,16 @@ lsp.nvim_workspace()
 lsp.on_attach(function(_, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
-    vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
-    vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
+    vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, { desc = "Go to definition" })
+    vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, { desc = "Hover (Shows documentation)" })
     vim.keymap.set('n', '<leader>vws', function() vim.lsp.buf.workspace_symbol() end, opts)
-    vim.keymap.set('n', '[d', function() vim.diagnostic.goto_next() end, opts)
-    vim.keymap.set('n', ']d', function() vim.diagnostic.goto_prev() end, opts)
-    vim.keymap.set('n', '<leader>cd', function() vim.diagnostic.open_float() end, opts)
-    vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, opts)
-    vim.keymap.set('n', '<leader>cf', function() vim.lsp.buf.references() end, opts)
-    vim.keymap.set('n', '<leader>cr', function() vim.lsp.buf.rename() end, opts)
-    vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
+    vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, { desc = "Diagnostic: go to prev"})
+    vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, { desc = "Diagnostic: go to next"})
+    vim.keymap.set('n', '<leader>cd', function() vim.diagnostic.open_float() end, { desc = "Open diagnostic" })
+    vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, { desc = "Code Actions" })
+    vim.keymap.set('n', '<leader>cf', function() vim.lsp.buf.references() end, { desc = "References" })
+    vim.keymap.set('n', '<leader>cr', function() vim.lsp.buf.rename() end, { desc = "Rename" })
+    vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, { desc = "Signature help" })
 end)
 
 -- CMP config
@@ -44,10 +44,10 @@ cmp.event:on(
 )
 
 cmp.setup({
-    preselect = 'item',
-    completion = {
-        completeopt = 'menu,menuone,noinsert'
-    },
+    preselect = cmp.PreselectMode.None,
+    -- completion = {
+    --     completeopt = 'menu,menuone,noinsert'
+    -- },
     sources = {
         { name = 'nvim_lsp' },
         { name = 'nvim_lsp_signature_help' },

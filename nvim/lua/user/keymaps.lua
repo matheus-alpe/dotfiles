@@ -3,6 +3,9 @@
 --vim.g.maplocalleader = ' '
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "File explorer" })
 
+vim.keymap.set("n", "<leader>gl", "<cmd>diffget //2<CR>", { desc = "Get right side diff" })
+vim.keymap.set("n", "<leader>gh", "<cmd>diffget //3<CR>", { desc = "Get left side diff" })
+
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection UP" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection DOWN" })
 
