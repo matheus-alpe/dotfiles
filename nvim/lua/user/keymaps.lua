@@ -1,7 +1,7 @@
 -- ============= CONFIG FROM: theprimeagen
 --vim.g.mapleader = ' '
 --vim.g.maplocalleader = ' '
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "File explorer" })
+-- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "File explorer" })
 
 vim.keymap.set("n", "<leader>gl", "<cmd>diffget //2<CR>", { desc = "Get right side diff" })
 vim.keymap.set("n", "<leader>gh", "<cmd>diffget //3<CR>", { desc = "Get left side diff" })
