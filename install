@@ -14,4 +14,5 @@ rm -rf $HOME/.local/bin/t
 ln -sf $DOTFILES/scripts/t $HOME/.local/bin/t
 
 rm -rf $HOME/.config/nvim
+rm -rf $HOME/.local/share/nvim
 ln -s $DOTFILES/nvim $HOME/.config/nvim
