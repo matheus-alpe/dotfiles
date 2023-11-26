@@ -110,7 +110,8 @@ lspconfig.emmet_language_server.setup({
 })
 
 lspconfig.volar.setup({
-    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
+    filetypes = { 'javascriptreact', 'typescriptreact', 'vue', 'json' }
+    -- filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
 })
 
 lsp.setup()
