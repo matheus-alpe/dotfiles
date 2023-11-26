@@ -46,7 +46,6 @@ return {
         utils.insert(0),
         utils.text { "", "}" },
     }),
-
     utils.snip("fori", {
         utils.text "for ",
         utils.insert(1, "i := 0"),
@@ -68,5 +67,18 @@ return {
         utils.text "\t",
         utils.insert(0),
         utils.text { "", "}" },
+    }),
+    utils.snip("goa", {
+        utils.text "go func",
+        utils.text "(",
+        utils.insert(1),
+        utils.text ")",
+        utils.text { " {", "" },
+        utils.text "\t",
+        utils.insert(0),
+        utils.text { "", "}" },
+        utils.text "(",
+        utils.insert(2),
+        utils.text ")",
     }),
 }
