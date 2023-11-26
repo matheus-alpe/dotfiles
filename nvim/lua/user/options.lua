@@ -36,5 +36,5 @@ vim.opt.pumblend = 10
 vim.opt.pumheight = 10
 vim.opt.signcolumn = 'yes:2'
 vim.opt.showmode = false
-vim.opt.updatetime = 2000
-vim.opt.redrawtime = 5000 -- Allow more time for loading syntax on large files
+vim.opt.updatetime = 1000
+vim.opt.redrawtime = 2000 -- Allow more time for loading syntax on large files
