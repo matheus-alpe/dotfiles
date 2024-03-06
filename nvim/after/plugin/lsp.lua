@@ -114,6 +114,8 @@ lspconfig.volar.setup({
     -- filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
 })
 
+lspconfig.omnisharp.setup({})
+
 lsp.setup()
 
 vim.diagnostic.config({
