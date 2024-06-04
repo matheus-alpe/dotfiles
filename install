@@ -4,20 +4,20 @@ DOTFILES=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 
 $DOTFILES/scripts/install/init.sh
 
-# rm -rf $HOME/.config/kitty
-# ln -s $DOTFILES/kitty $HOME/.config/kitty
-#
-# rm -rf $HOME/.tmux.conf
-# ln -s $DOTFILES/tmux/tmux.conf $HOME/.tmux.conf
-#
-# rm -rf $HOME/.zshrc
-# ln -s $DOTFILES/.zshrc $HOME/.zshrc
-#
-# mkdir -p $HOME/.local/bin
-#
-# rm -rf $HOME/.local/bin/t
-# ln -sf $DOTFILES/scripts/t $HOME/.local/bin/t
-#
-# rm -rf $HOME/.config/nvim
-# rm -rf $HOME/.local/share/nvim
-# ln -s $DOTFILES/kickstart.nvim $HOME/.config/nvim
+rm -rf $HOME/.config/kitty
+ln -s $DOTFILES/kitty $HOME/.config/kitty
+
+rm -rf $HOME/.tmux.conf
+ln -s $DOTFILES/tmux/tmux.conf $HOME/.tmux.conf
+
+rm -rf $HOME/.zshrc
+ln -s $DOTFILES/.zshrc $HOME/.zshrc
+
+mkdir -p $HOME/.local/bin
+
+rm -rf $HOME/.local/bin/t
+ln -sf $DOTFILES/scripts/t $HOME/.local/bin/t
+
+rm -rf $HOME/.config/nvim
+rm -rf $HOME/.local/share/nvim
+ln -s $DOTFILES/kickstart.nvim $HOME/.config/nvim
