@@ -85,8 +85,6 @@ export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 export PATH="$PATH:$(go env GOPATH)/bin"
 
-export PATH="$PATH:$HOME/workspace/dot/studion-mx-devstack/"
-
 function workmode() {
   ANSWER="$1"
 
@@ -100,16 +98,15 @@ function workmode() {
   fi
 
   nvm use 16
-  git config --global user.email "matheus.pereira@cortex.com.br"
+  git config --global user.email "matheus.pereira@cortex-intelligence.com"
   git config --global user.name "Matheus Alves Pereira"
   node -v
   git config --global user.email
 }
 
-# Dot
-function dot() {
+function cortex() {
   COMMAND="$1"
-  DOT_WORKSPACE="$HOME/workspace/dot"
+  DOT_WORKSPACE="$HOME/workspace/cortex"
 
   workmode
 

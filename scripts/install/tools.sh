@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+
 # FZF
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
