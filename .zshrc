@@ -73,11 +73,13 @@ export PATH="$PATH":"$HOME/.local/bin"
 # Personal alias
 alias vim="nvim"
 alias exa="exa --icons --long --all --header --group --octal-permissions"
-alias tree="exa --tree"
+alias tree="exa --tree --ignore-glob='node_modules|.git'"
 alias workspace="$HOME/workspace"
 alias ws="workspace;"
 alias pp="$HOME/workspace/personal-projects && workmode off"
 alias gpusho='git push origin "$(git_current_branch)"'
+alias gpullo='git pull origin "$(git_current_branch)"'
+alias gpushu='git push upstream "$(git_current_branch)"'
 alias gpullu='git pull upstream "$(git_current_branch)"'
 
 # GO
@@ -88,35 +90,36 @@ export PATH="$PATH:$(go env GOPATH)/bin"
 function workmode() {
   ANSWER="$1"
 
+  git config --global user.name "Matheus Alves Pereira"
+
   if [[ "$ANSWER" ]]; then
-    nvm use 18
     git config --global user.email "matt.alpe.dev@gmail.com"
-    git config --global user.name "Matheus Alves Pereira"
-    node -v
     git config --global user.email
     return 2
   fi
 
-  nvm use 16
   git config --global user.email "matheus.pereira@cortex-intelligence.com"
-  git config --global user.name "Matheus Alves Pereira"
-  node -v
   git config --global user.email
 }
 
 function cortex() {
   COMMAND="$1"
-  DOT_WORKSPACE="$HOME/workspace/cortex"
+  CORTEX_WORKSPACE="$HOME/workspace/cortex"
 
   workmode
 
   case $COMMAND in
-  api) cd "$DOT_WORKSPACE/studion-api" ;;
-  key) cd "$DOT_WORKSPACE/studion-identity-keycloak" ;;
-  web) cd "$DOT_WORKSPACE/studion-web-app" ;;
-  dev) cd "$DOT_WORKSPACE/studion-mx-devstack" ;;
-  rh) firefox --new-tab "https://platform.senior.com.br/senior-x/#/" >/dev/null 2>&1 & sudo openfortivpn;;
-  *) cd "$DOT_WORKSPACE" ;;
+  ui) cd "$CORTEX_WORKSPACE/onmaps-ui" ;;
+  bk) cd "$CORTEX_WORKSPACE/onmaps" ;;
+  *) 
+    TARGET_DIR="$CORTEX_WORKSPACE/$COMMAND"
+
+    if [[ -d "$TARGET_DIR" ]]; then
+      cd "$TARGET_DIR"
+    else
+      cd "$CORTEX_WORKSPACE"
+    fi
+  ;;
   esac
 }
 
@@ -144,3 +147,8 @@ if [[ -z "$TMUX" ]]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
